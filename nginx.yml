@@ -1,0 +1,10 @@
+---
+- hosts: all
+  
+  tasks:
+   - name: Install nginx
+     yum: name=nginx   state=present
+   - name: configure nginx
+     copy: src=app/index.html dest=/usr/share/nginx/html/index.html
+   - name: start nginx
+     service: name=nginx state=started
